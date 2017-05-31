@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	
+	<script src="js/angular.js"></script>
+	<title>Assignment Solution </title>
+
+	<script type="text/javascript">
+	
+		var myApp = angular.module('myApp', []);
+
+		myApp.controller('myController', function ($scope) {
+			$scope.name = 'Acadgild';
+			$scope.getName = function(){
+				alert('Name is ' + $scope.name);
+			}
+		});
+
+		myApp.directive('isolateDir', function(){
+			return {
+				restrict :'A',
+				transclude : true,
+				scope : {
+					name : '&'
+				},
+				template : 'Click on Button to alert name <br> <br><button ng-click="name()"> Show Name</div>'
+			}
+		})
+		
+	</script>
+
+
+</head>
+
+<body>
+
+<center>
+
+		<div ng-controller="myController">
+
+			
+			<div isolate-dir name="getName()">
+				
+			</div>
+						
+		</div>
+				
+</center>
+
+
+</body>
+</html>
